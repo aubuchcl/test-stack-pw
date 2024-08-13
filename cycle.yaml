@@ -9,7 +9,7 @@ containers:
       origin:
         type: docker-registry
         details:
-          target: "cycleplatform/docs:latest"
+          target: "cycleplatform/api-docs:v2"
           url: "{{repo-url}}"
           username: "{{repo-username}}"
           password: "{{repo-password}}"
