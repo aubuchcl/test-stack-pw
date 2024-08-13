@@ -1,0 +1,42 @@
+
+version: '1.0'
+containers:
+  demo:
+    stateful: false
+    name: demo
+    image:
+      name: simplews
+      origin:
+        type: docker-registry
+        details:
+          target: "cycleplatform/docs:latest"
+          url: "{{repo-url}}"
+          username: "{{repo-username}}"
+          password: "{{repo-password}}"
+    config:
+      network:
+        public: enable
+        hostname: simplews
+        ports:
+        - 80:80
+      deploy:
+        instances: 1
+  reach:
+    stateful: false
+    name: reach
+    image:
+      name: simplews-external
+      origin:
+        type: docker-hub
+        details:
+          target: "cycleplatform/portal-docs:latest"
+          username: "{{dockerhub-username}}"
+          token: "{{dockerhub-token}}"
+    config:
+      network:
+        public: enable
+        hostname: simplews
+        ports:
+        - 80:80
+      deploy:
+        instances: 1
